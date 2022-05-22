@@ -1,15 +1,24 @@
 import './scss/index.scss'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
-import Main from './components/Main';
+import Product from './components/Product';
+import HomePage from './components/HomePage';
 
 function App() {
   return (
-    <div>
-      <header>
-         <a href="/">Amazona</a>
-      </header>
-      <Main/>
-    </div>
+    <Router>
+        <div>
+          <header>
+            <Link to="/">Amazona</Link>
+          </header>
+          <main>
+            <Routes>
+                <Route path="/" element={<HomePage/>}/>
+                <Route path="/product/:slug" element={<Product/>}/>
+            </Routes>
+          </main>
+        </div>
+    </Router>
   );
 }
 

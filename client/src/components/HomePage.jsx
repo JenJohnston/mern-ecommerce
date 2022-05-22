@@ -1,25 +1,26 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import data from '../data'
 
-export default function Main() {
+
+
+export default function HomePage() {
     
-
-
     return (
-        <main>
+        <div className='feature-container'>
            <h1>Featured Products</h1>
            <div className="products">
            {
                data.products.map((product, id) => (
                    <div className='product' key={id}>
-                       <a href={`/product/${product.slug}`}>
+                       <Link to={`/product/${product.slug}`}>
                            <img src={process.env.PUBLIC_URL + product.image} alt={product.name} />
-                       </a>
+                       </Link>
                        <div className="product-info">
-                          <a href={`/product/${product.slug}`}>
+                          <Link to={`/product/${product.slug}`}>
                             <h4>{product.name}</h4>
-                          </a>
+                          </Link>
                           <p>${product.price}</p>
                           <button className='product-btn'>Add To Cart</button>
                        </div>
@@ -30,6 +31,6 @@ export default function Main() {
               
            }
            </div>
-        </main>
+        </div>
     )
 }
