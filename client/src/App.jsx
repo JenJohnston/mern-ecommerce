@@ -1,5 +1,5 @@
 import './scss/index.scss'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
@@ -11,7 +11,7 @@ import HomePage from './components/HomePage';
 function App() {
   return (
     <Router>
-        <div>
+        <div className='d-flex flex-column site-container'>
           <header>
             <Navbar bg="dark" variant="dark">
               <Container>
@@ -29,7 +29,7 @@ function App() {
               </Routes>
             </Container>
           </main>
-          <footer>
+          <footer >
             <p className='text-center'>&copy; 2022 All Rights Reserved | For Demo Purposes Only</p>
           </footer>
         </div>
