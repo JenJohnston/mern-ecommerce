@@ -1,8 +1,10 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer, useEffect, useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Helmet } from 'react-helmet-async'
 import { getError } from '../utils'
+
+import { Store } from '../Store';
 
 import ListGroup from 'react-bootstrap/ListGroup'
 import Row from 'react-bootstrap/Row'
@@ -60,6 +62,12 @@ export default function ProductPage() {
         fetchData()
     }, [slug])
 
+    const {state, dispatch: ctxDispatch} = useContext(Store)
+
+    const addToCartHandler = () => {
+        ctxDispatch({type: 'CART_ADD_ITEM', payload: {...product, quantity: 1}})
+    }
+
     return (
         loading ? ( <LoadingBox /> ) :
         error ? ( <MessageBox variant="danger">{error}</MessageBox> ) :
@@ -114,7 +122,7 @@ export default function ProductPage() {
                                 {product.countInStock > 0 && (
                                     <ListGroup.Item>
                                         <div className="d-grid">
-                                            <Button variant="primary">
+                                            <Button onClick={addToCartHandler} variant="primary">
                                                 Add to Cart
                                             </Button>
                                         </div>
