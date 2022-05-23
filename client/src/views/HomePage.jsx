@@ -1,7 +1,12 @@
 import React, { useEffect, useReducer } from 'react'
-import { Link } from 'react-router-dom'
+
 import axios from 'axios'
-import logger from 'use-reducer-logger'
+
+
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+
+import Product from '../components/Product'
 
 const reducer = (state, action) => {
     switch(action.type) {
@@ -18,7 +23,7 @@ const reducer = (state, action) => {
 
 function HomePage() {
     
-    const [{loading, error, products}, dispatch] = useReducer(logger(reducer), {
+    const [{loading, error, products}, dispatch] = useReducer(reducer, {
         products: [],
         loading: true, 
         error: ''
@@ -49,25 +54,15 @@ function HomePage() {
            <div className="products">
            {
                loading ? ( <div>Loading...</div> ) :
-               error ? ( <div>{error}</div> ) :
-               (products.map((product, id) => (
-                   <div className='product' key={product.slug}>
-                       <Link to={`/product/${product.slug}`}>
-                           <img src={process.env.PUBLIC_URL + product.image} alt={product.name} />
-                       </Link>
-                       <div className="product-info">
-                          <Link to={`/product/${product.slug}`}>
-                            <h4>{product.name}</h4>
-                          </Link>
-                          <p>${product.price}</p>
-                          <button className='product-btn'>Add To Cart</button>
-                       </div>
-                   </div>
-                   
-               )))
-
-               
-           }
+               error ? ( <div>{error}</div> ) : (
+                <Row>
+                  {products.map((product) => (
+                    <Col key={product.slug} sm={6} md={4} lg={3} className="mb-3">
+                        <Product product={product}/>
+                    </Col>
+                  ))}
+                </Row>
+              )}
            </div>
         </div>
     )

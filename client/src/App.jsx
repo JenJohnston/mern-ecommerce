@@ -5,8 +5,8 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import {LinkContainer} from 'react-router-bootstrap'
 
-import Product from './components/Product';
-import HomePage from './components/HomePage';
+import Product from './views/Product';
+import HomePage from './views/HomePage';
 
 function App() {
   return (

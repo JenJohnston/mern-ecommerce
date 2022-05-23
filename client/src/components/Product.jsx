@@ -1,14 +1,32 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-export default function Product() {
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+
+import Rating from './Rating'
+
+function Product(props) {
+    const { product } = props;
     
-    const params = useParams()
-    const {slug} = params
-
+    console.log(props)
     return (
-        <div>
-            <h1>{slug}</h1>
-        </div>
+        <Card>
+            <Link to={`/product/${product.slug}`}>
+                <img className='card-img-top' src={process.env.PUBLIC_URL + product.image} alt={product.name} />
+            </Link>
+            <Card.Body>
+                <Link to={`/product/${product.slug}`}>
+                    <Card.Title>{product.name}</Card.Title>
+                </Link>
+                <Rating rating={product.rating} numReviews={product.numReviews}/>
+                <Card.Text>${product.price}</Card.Text>
+                <Button className='product-btn'>Add To Cart</Button>
+            </Card.Body>
+        </Card> 
     )
 }
+
+export default Product
+
+
