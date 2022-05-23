@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Helmet } from 'react-helmet-async'
+import { getError } from '../utils'
 
 import ListGroup from 'react-bootstrap/ListGroup'
 import Row from 'react-bootstrap/Row'
@@ -11,7 +12,10 @@ import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
 
 import Rating from '../components/Rating'
-import ListGroupItem from 'react-bootstrap/esm/ListGroupItem'
+import LoadingBox from '../components/LoadingBox'
+import MessageBox from '../components/MessageBox'
+
+
 
 const reducer = (state, action) => {
     switch(action.type) {
@@ -48,7 +52,7 @@ export default function ProductPage() {
                 dispatch({type: 'FETCH_SUCCESS', payload: result.data})
                 
             } catch(err) {
-                dispatch({type: 'FETCH_FAIL', payload: err.message})
+                dispatch({type: 'FETCH_FAIL', payload: getError(err)})
             }
             
             // setProducts(result.data)
@@ -57,8 +61,8 @@ export default function ProductPage() {
     }, [slug])
 
     return (
-        loading ? ( <div>Loading...</div> ) :
-        error ? ( <div>{error}</div> ) :
+        loading ? ( <LoadingBox /> ) :
+        error ? ( <MessageBox variant="danger">{error}</MessageBox> ) :
       (  <div>
             <Row>
                 <Col md={6}>
