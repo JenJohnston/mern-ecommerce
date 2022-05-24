@@ -2,16 +2,17 @@ import React, {useContext} from 'react'
 import './scss/index.scss'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
+import { Store } from './Store';
+
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import Badge from 'react-bootstrap/esm/Badge';
 import {LinkContainer} from 'react-router-bootstrap'
 
-import { Store } from './Store';
-
 import ProductPage from './views/ProductPage';
 import HomePage from './views/HomePage';
+import Cart from './views/Cart';
 
 
 
@@ -47,6 +48,7 @@ function App() {
             <Container className='mt-3'>
               <Routes>
                   <Route path="/" element={<HomePage/>}/>
+                  <Route path="/cart" element={<Cart/>}/>
                   <Route path="/product/:slug" element={<ProductPage/>}/>
               </Routes>
             </Container>

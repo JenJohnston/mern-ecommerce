@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect, useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Helmet } from 'react-helmet-async'
 import { getError } from '../utils'
@@ -35,6 +35,7 @@ const reducer = (state, action) => {
 
 export default function ProductPage() {
     
+    const navigate = useNavigate()
     const params = useParams()
     const {slug} = params
 
@@ -77,6 +78,8 @@ export default function ProductPage() {
             type: 'CART_ADD_ITEM', 
             payload: {...product, quantity}
         })
+
+        navigate('/cart', {replace: true})
     }
 
     return (
