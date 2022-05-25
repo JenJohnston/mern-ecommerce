@@ -23,6 +23,7 @@ import Signin from './views/Signin';
 import Signup from './views/Signup';
 import Shipping from './views/Shipping';
 import Payment from './views/Payment';
+import PlaceOrder from './views/PlaceOrder';
 
 
 
@@ -91,6 +92,8 @@ function App() {
                   <Route path="/signup" element={<Signup/>}/>
                   <Route path="/shipping" element={<Shipping/>}/>
                   <Route path="/payment" element={<Payment/>}/>
+                  <Route path="/placeorder" element={<PlaceOrder/>}/>
+
                   <Route path="/product/:slug" element={<ProductPage/>}/>
               </Routes>
             </Container>
