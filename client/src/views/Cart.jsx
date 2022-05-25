@@ -68,7 +68,7 @@ export default function Cart(props) {
                             {cartItems.map((item) => (
                                 <ListGroup.Item key={item._id}>
                                     <Row className="align-items-center">
-                                        <Col md={4}>
+                                        <Col className='cart-item-details' md={4}>
                                             <img src={item.image} 
                                                  alt={item.name}
                                                  className="img-fluid rounded img-thumbnail" 
