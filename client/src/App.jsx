@@ -5,6 +5,8 @@ import { ToastContainer } from 'react-toastify'
 
 import { Store } from './Store';
 
+// Bootstrap
+
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropDown from 'react-bootstrap/NavDropdown'
 import Nav from 'react-bootstrap/Nav'
@@ -12,10 +14,14 @@ import Container from 'react-bootstrap/Container'
 import Badge from 'react-bootstrap/esm/Badge';
 import {LinkContainer} from 'react-router-bootstrap'
 
+// Views
+
 import ProductPage from './views/ProductPage';
 import HomePage from './views/HomePage';
 import Cart from './views/Cart';
 import Signin from './views/Signin';
+import Shipping from './views/Shipping';
+import Payment from './views/Payment';
 
 
 
@@ -29,6 +35,7 @@ function App() {
   const signoutHandler = () => {
     ctxDispatch({ type: 'USER_SIGNOUT'})
     localStorage.removeItem('userInfo')
+    localStorage.removeItem('shippingAddress')
   }
 
   return (
@@ -79,6 +86,9 @@ function App() {
                   <Route path="/" element={<HomePage/>}/>
                   <Route path="/cart" element={<Cart/>}/>
                   <Route path="/signin" element={<Signin/>}/>
+                  <Route path="/shipping" element={<Shipping/>}/>
+                  <Route path="/payment" element={<Payment/>}/>
+
                   <Route path="/product/:slug" element={<ProductPage/>}/>
               </Routes>
             </Container>
