@@ -32,7 +32,7 @@ export default function Shipping() {
     }, [userInfo, navigate])
 
     const submitHandler = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         ctxDispatch({
             type: 'SAVE_SHIPPING_ADDRESS',
             payload: {

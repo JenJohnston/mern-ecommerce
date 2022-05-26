@@ -24,6 +24,7 @@ import Signup from './views/Signup';
 import Shipping from './views/Shipping';
 import Payment from './views/Payment';
 import PlaceOrder from './views/PlaceOrder';
+import Orders from './views/Orders';
 
 
 
@@ -93,7 +94,7 @@ function App() {
                   <Route path="/shipping" element={<Shipping/>}/>
                   <Route path="/payment" element={<Payment/>}/>
                   <Route path="/placeorder" element={<PlaceOrder/>}/>
-
+                  <Route path="/order/:id" element={<Orders/>}/>
                   <Route path="/product/:slug" element={<ProductPage/>}/>
               </Routes>
             </Container>
