@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect, useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import Axios from 'axios'
+import axios from 'axios'
 
 import { Store } from '../Store'
 import { getError } from '../utils'
@@ -47,21 +47,20 @@ export default function Orders(props) {
         error: '',
     })
 
+
     useEffect(() => {
         const fetchOrder = async () => {
-            try 
-            {
-                dispatch({ type: 'FETCH_REQUEST' })
-                const { data } = await Axios.get(`api/orders/${orderId}`, {
-                    headers: { authorization: `Bearer ${userInfo.token}`}
-                })
-                dispatch({ type: 'FETCH_SUCCESS', payload: data })
+            try {
+              dispatch({ type: 'FETCH_REQUEST' });
+              const { data } = await axios.get(`/api/orders/${orderId}`, {
+                headers: { authorization: `Bearer ${userInfo.token}` },
+              });
+              dispatch({ type: 'FETCH_SUCCESS', payload: data });
+            } catch (err) {
+              dispatch({ type: 'FETCH_FAIL', payload: getError(err) });
             }
-            catch(err)
-            {
-                dispatch({ type: 'FETCH_FAIL', payload: getError(err)})
-            }
-        }
+          };
+      
 
         if (!userInfo) {
             return navigate('/signup')

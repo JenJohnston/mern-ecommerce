@@ -49,10 +49,10 @@ function App() {
             <ToastContainer position="bottom-center" limit={1}/>
             <Navbar bg="dark" variant="dark">
               <Container>
-                <LinkContainer to="/">
+                <LinkContainer to="/" className="header-link">
                   <Navbar.Brand>Amazona</Navbar.Brand>
                 </LinkContainer>
-                <Nav className="me-auto">
+                <Nav className="">
                   <Link to="/cart" className="nav-link">
                     Cart
                     {cart.cartItems.length > 0 && (
