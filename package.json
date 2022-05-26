@@ -1,0 +1,21 @@
+{
+  "name": "mern-ecommerce",
+  "version": "1.0.0",
+  "description": "e-commerce app built with React, Mongo and Express/Node",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd server && npm install && cd ../client && npm install && npm run build",
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JenJohnston/mern-ecommerce.git"
+  },
+  "author": "Jennifer Johnston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JenJohnston/mern-ecommerce/issues"
+  },
+  "homepage": "https://github.com/JenJohnston/mern-ecommerce#readme"
+}
