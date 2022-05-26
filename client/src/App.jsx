@@ -25,6 +25,7 @@ import Shipping from './views/Shipping';
 import Payment from './views/Payment';
 import PlaceOrder from './views/PlaceOrder';
 import Orders from './views/Orders';
+import OrderHistory from './views/OrderHistory';
 
 
 
@@ -47,12 +48,14 @@ function App() {
         <div className='d-flex flex-column site-container'>
           <header>
             <ToastContainer position="bottom-center" limit={1}/>
-            <Navbar bg="dark" variant="dark">
+            <Navbar bg="dark" variant="dark" expand="lg">
               <Container>
-                <LinkContainer to="/" className="header-link">
+                <LinkContainer to="/" className="">
                   <Navbar.Brand>Amazona</Navbar.Brand>
                 </LinkContainer>
-                <Nav className="">
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto w-100 justify-content-end">
                   <Link to="/cart" className="nav-link">
                     Cart
                     {cart.cartItems.length > 0 && (
@@ -66,7 +69,7 @@ function App() {
                       <LinkContainer to="/profile">
                         <NavDropDown.Item>User Profile</NavDropDown.Item>
                       </LinkContainer>
-                      <LinkContainer to="/profile">
+                      <LinkContainer to="/orderhistory">
                         <NavDropDown.Item>Order History</NavDropDown.Item>
                       </LinkContainer>
                       <NavDropDown.Divider/>
@@ -81,6 +84,7 @@ function App() {
                     : 
                     (<Link className="nav-link" to="/signin">Sign In</Link>)}
                 </Nav>
+                </Navbar.Collapse>
               </Container>
             </Navbar>
           </header>
@@ -95,6 +99,7 @@ function App() {
                   <Route path="/payment" element={<Payment/>}/>
                   <Route path="/placeorder" element={<PlaceOrder/>}/>
                   <Route path="/order/:id" element={<Orders/>}/>
+                  <Route path="/orderhistory" element={<OrderHistory/>}/>
                   <Route path="/product/:slug" element={<ProductPage/>}/>
               </Routes>
             </Container>
